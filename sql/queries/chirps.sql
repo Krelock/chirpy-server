@@ -8,3 +8,16 @@ VALUES (
     $2
 )
 RETURNING *;
+
+
+-- name: DeleteChirp :exec
+DELETE FROM chirps WHERE id = $1;
+
+-- name: GetChirpByID :one
+SELECT * FROM chirps WHERE id = $1;
+
+
+-- name: UpgradeChirp :exec
+UPDATE users
+SET is_chirpy_red = true 
+WHERE id = $1;
